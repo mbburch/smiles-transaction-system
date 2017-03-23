@@ -12,10 +12,7 @@ class TransfersController < ApplicationController
 
   def create
     transfer = @human.transfers.create(transfer_params)
-    if @human.smile_count + transfer.smile_count >= 0
-      @human.update!(smile_count: transfer.smile_count)
-      json_response(@human, :created)
-    end
+    @human.update!(smile_count: (transfer.smile_count + @human.smile_count))
   end
 
   private
