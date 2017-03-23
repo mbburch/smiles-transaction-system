@@ -10,27 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323145248) do
+ActiveRecord::Schema.define(version: 20170323151519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "humen", force: :cascade do |t|
+  create_table "humans", force: :cascade do |t|
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "smile_count"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "smile_count", default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "transfers", force: :cascade do |t|
     t.integer  "smile_count"
-    t.integer  "humen_id"
+    t.integer  "human_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["humen_id"], name: "index_transfers_on_humen_id", using: :btree
+    t.index ["human_id"], name: "index_transfers_on_human_id", using: :btree
   end
 
-  add_foreign_key "transfers", "humen", column: "humen_id"
+  add_foreign_key "transfers", "humans"
 end
