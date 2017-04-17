@@ -7,7 +7,7 @@ class TransfersController < ApplicationController
   end
 
   def show
-    json_response(@tranfer)
+    json_response(@transfer)
   end
 
   def create
